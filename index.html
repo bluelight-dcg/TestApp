@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editor de README en GitHub</title>
+    <title>Lectura de README en GitHub</title>
 </head>
 <body>
-    <h1>Editor de README en GitHub</h1>
-    <textarea id="fileContent" rows="20" cols="80"></textarea><br>
-    <button onclick="updateFile()">Actualizar README</button>
+    <h1>Contenido del README.md</h1>
+    <pre id="fileContent">Cargando contenido...</pre>
 
     <script>
         const token = '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'; // Reemplaza con tu token de acceso personal
@@ -30,36 +29,9 @@
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const text = await response.text();
-                document.getElementById('fileContent').value = text;
+                document.getElementById('fileContent').textContent = text;
             } catch (error) {
-                alert(`Error al cargar el archivo: ${error.message}`);
-            }
-        }
-
-        // Actualizar el contenido del archivo README.md
-        async function updateFile() {
-            const content = document.getElementById('fileContent').value;
-            const base64Content = btoa(content);
-            try {
-                const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Actualización del README.md desde GitHub Pages',
-                        content: base64Content,
-                        branch: branch
-                    })
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const result = await response.json();
-                alert('README.md actualizado: ' + result.content.sha);
-            } catch (error) {
-                alert(`Error al actualizar el archivo: ${error.message}`);
+                document.getElementById('fileContent').textContent = `Error al cargar el archivo: ${error.message}`;
             }
         }
 
