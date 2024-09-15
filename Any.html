@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Datos en Archivo de Texto</title>
+</head>
+<body>
+    <h1>Formulario para Guardar Datos</h1>
+    <form id="dataForm">
+        <label for="dataInput">Introduce tus datos:</label>
+        <input type="text" id="dataInput" name="data" required>
+        <button type="submit">Guardar Datos</button>
+    </form>
+    <p id="status"></p>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const data = document.getElementById('dataInput').value;
+
+            fetch('saveData.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: data }),
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('status').innerText = 'Datos guardados exitosamente.';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('status').innerText = 'Error al guardar los datos.';
+            });
+        });
+    </script>
+</body>
+</html>
