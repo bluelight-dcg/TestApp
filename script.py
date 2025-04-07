@@ -91,10 +91,10 @@ if res12 is not None:
 
 #######
 # Insertar 10 timestamps en zona horaria UTC-3
-for i in range(31):
+for i in range(80000):
     now_utc_minus3 = datetime.utcnow() - timedelta(hours=3)
     timestamp = now_utc_minus3.strftime("%Y-%m-%d %H:%M:%S")
-    if i % 10 == 0:
+    if i % 1000 == 0:
         print(f"Conteo: {i}")
         res12 = func6()
         insert_timestamp(f"✅ Totallabras': {res12}")
