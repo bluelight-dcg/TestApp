@@ -3,12 +3,14 @@ import psycopg2
 from datetime import datetime, timedelta
 
 
-# Detalles de conexión
-hostname = "noo81.h.filess.io"
-database = "Test321_partforty"
+# Nuevos detalles de conexión
+hostname = "0crl1.h.filess.io"
+database = "Test9876_shinningis"
 port = "61007"
-username = "Test321_partforty"
-password = "738242b8baa61ac0313372286db18b5a4dd0c4c0"
+username = "Test9876_shinningis"
+password = "3875d5e4415466cf9fe375095ae0f189ab81e4ca"
+
+
 
 # Obtener todos los 
 
@@ -56,13 +58,46 @@ def insert_timestamp(value):
         print(f"❌ Failed to insert timestamp: {error}")
 
 #############
+
+import psycopg2
+
+# Database connection details
+host1 = "1jstx.h.filess.io"
+name2 = "Fdatabase_bearaskdo"
+port3 = "61007"
+user4 = "Fdatabase_bearaskdo"
+pass5 = "31f702ea3b6dcc967db964f87d2d5326092e987d"
+
+# Function to count rows in the table
+def func6():
+    """Counts rows in nuevo_esquema.palabras table."""
+    try:
+        with psycopg2.connect(
+            database=name2, user=user4, password=pass5,
+            host=host1, port=port3
+        ) as conn7:
+            with conn7.cursor() as cur8:
+                sql9 = "SELECT COUNT(*) FROM nuevo_esquema.palabras;"
+                cur8.execute(sql9)
+                count10 = cur8.fetchone()[0]
+                return count10
+    except psycopg2.Error as err11:
+        print(f"❌ Failed to count rows: {err11}")
+        return None
+
+# Call and print the result
+res12 = func6()
+if res12 is not None:
+    print(f"✅ Total rows in 'nuevo_esquema.palabras': {res12}")
+
+#######
 # Insertar 10 timestamps en zona horaria UTC-3
-for i in range(20000):
+for i in range(31):
     now_utc_minus3 = datetime.utcnow() - timedelta(hours=3)
     timestamp = now_utc_minus3.strftime("%Y-%m-%d %H:%M:%S")
-    if i % 500 == 0:
+    if i % 10 == 0:
         print(f"Conteo: {i}")
-        insert_timestamp(f"Conteo: {i}")
+        insert_timestamp(f"✅ Totallabras': {res12}")
     insert_row(timestamp)
 
 print("✅ Palabras insertadas correctamente")
