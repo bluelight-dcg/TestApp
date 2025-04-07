@@ -62,13 +62,12 @@ def insert_timestamp(value):
 import psycopg2
 
 # Database connection details
-host1 = "1jstx.h.filess.io"
-name2 = "Fdatabase_bearaskdo"
+host1 = "0crl1.h.filess.io"
+name2 = "Test9876_shinningis"
 port3 = "61007"
-user4 = "Fdatabase_bearaskdo"
-pass5 = "31f702ea3b6dcc967db964f87d2d5326092e987d"
-
-# Function to count rows in the table
+user4 = "Test9876_shinningis"
+pass5 = "3875d5e4415466cf9fe375095ae0f189ab81e4ca"
+# Function t count rows in the table
 def func6():
     """Counts rows in nuevo_esquema.palabras table."""
     try:
